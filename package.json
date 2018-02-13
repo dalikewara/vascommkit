@@ -6,6 +6,10 @@
   "directories": {
     "example": "examples"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalikewara/vascommkit.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
