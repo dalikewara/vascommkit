@@ -37,8 +37,8 @@
 Soon...
 
 ### Credits
-Copyright &copy; 2018 Dali Kewara and team:
-  - Teguh Wahyu Santoso
+Copyright &copy; 2018 **Dali Kewara** and team:
+  - **Teguh Wahyu Santoso**
 
 ### Examples
 - `lps` **function (n, val)**
