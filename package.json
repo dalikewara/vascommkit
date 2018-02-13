@@ -1,6 +1,6 @@
 {
   "name": "vascommkit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A free toolkit for your needed",
   "main": "index.js",
   "directories": {
