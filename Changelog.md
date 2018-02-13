@@ -6,5 +6,5 @@
   - Edit README.md
   - Preparing functions `cemtex`
 
-  - 1.1.1
-    - Added github repository
+- 1.1.1
+  - Added github repository
