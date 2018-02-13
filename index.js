@@ -1,0 +1,20 @@
+"use strict";
+
+const lpz = require('./functions/lpz.js');
+const lps = require('./functions/lps.js');
+const rpz = require('./functions/rpz.js');
+const rps = require('./functions/rps.js');
+const looper = require('./functions/looper.js');
+const soa = require('./functions/soa.js');
+const cemtex = require('./functions/cemtex.js');
+const time = require('./functions/time.js');
+var vascommkit = new Object;
+vascommkit.lpz = lpz.lpz;
+vascommkit.lps = lps.lps;
+vascommkit.rpz = rpz.rpz;
+vascommkit.rps = rps.rps;
+vascommkit.looper = looper.looper;
+vascommkit.soa = soa;
+vascommkit.cemtex = cemtex;
+vascommkit.time = time;
+module.exports = vascommkit;

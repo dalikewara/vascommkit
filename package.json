@@ -1,0 +1,23 @@
+{
+  "name": "vascommkit",
+  "version": "1.0.8",
+  "description": "A free toolkit for your needed",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "toolkit",
+    "vascomm"
+  ],
+  "author": "Dali Kewara",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.0",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14"
+  }
+}
