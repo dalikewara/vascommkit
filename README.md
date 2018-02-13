@@ -34,13 +34,18 @@
   - `isExpired` check datetime expired.
 
 ### Changelog
-Soon...
+See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
 
 ### Credits
-Copyright &copy; 2018 **Dali Kewara** and team:
-  - **Teguh Wahyu Santoso**
+Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
+  - [Teguh Wahyu Santoso](https://teguh.ws/)
 
-### Examples
+### License
+[MIT License](https://github.com/dalikewara/vascommkit/blob/master/LICENSE)
+
+<br><hr><br>
+
+## Examples
 - `lps` **function (n, val)**
 
         const lps = vascommkit.lps(5, 200);
