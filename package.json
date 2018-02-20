@@ -21,7 +21,11 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.6.0",
+    "faker": "^4.1.0",
+    "md5": "^2.2.1",
     "moment": "^2.20.1",
-    "moment-timezone": "^0.5.14"
+    "moment-timezone": "^0.5.14",
+    "oauth2-server": "^3.0.0",
+    "redis": "^2.8.0"
   }
 }

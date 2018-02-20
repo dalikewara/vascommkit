@@ -8,3 +8,8 @@
 
 - 1.1.1
   - Added github repository
+
+- 1.1.2
+  - Preparing functions `oauth2`
+  - Preparing models `Oauth2ServerModel`, `TokenModel`, `UserModel`
+  - Added functions `fake`

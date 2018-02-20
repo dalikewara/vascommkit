@@ -32,6 +32,7 @@
   - `custom` get current datetime with custom format.
   - `add` add specified time to datetime.
   - `isExpired` check datetime expired.
+- `fake` Generate massive amounts of fake data. This function returned the data as an object array. So, you can easily manage it.
 
 ### Changelog
 See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
@@ -101,11 +102,11 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
   - *return* mixed
 <br><br>
 - `soa` object {}
-   - `getVal` **function (tag, xml)**
+  - `getVal` **function (tag, xml)**
 
-          const getSOAValue = vascommkit.soa.getVal('name', '<name xmlns:q0="https://www.dalikewara.com">Linus Torvald</name>');
+        const getSOAValue = vascommkit.soa.getVal('name', '<name xmlns:q0="https://www.dalikewara.com">Linus Torvald</name>');
 
-          console.log(getSOAValue); // output 'Linus Torvald'
+        console.log(getSOAValue); // output 'Linus Torvald'
 
     - *string* **tag**
     - *string* **xml**
@@ -118,9 +119,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
           console.log(daysInMonth);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `day` **function (options[optional])**
 
@@ -128,9 +129,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
          console.log(day);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `month` **function (options[optional])**
 
@@ -138,9 +139,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(month);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `year` **function (options[optional])**
 
@@ -148,9 +149,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(year);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `hour` **function (options[optional])**
 
@@ -158,9 +159,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(hour);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `minute` **function (options[optional])**
 
@@ -168,9 +169,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(minute);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `second` **function (options[optional])**
 
@@ -178,9 +179,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(second);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `now` **function (options[optional])**
 
@@ -198,9 +199,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(date);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `time` **function (options[optional])**
 
@@ -208,9 +209,9 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(time);
 
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `custom` **function (format, options[optional])**
 
@@ -218,10 +219,10 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(custom);
 
-   - *string* **format**
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *string* **format**
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `add` **function (date, len, prefix, options[optional])**
 
@@ -229,12 +230,12 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(add);
 
-   - *string* **date**
-   - *string* **len**
-   - *string* **prefix** | verb(s)
-   - *object* **options**
-     - *string* timezone
-   - *return* string
+    - *string* **date**
+    - *string* **len**
+    - *string* **prefix** | verb(s)
+    - *object* **options**
+      - *string* timezone
+    - *return* string
 <br><br>
   - `isExpired` **function (date, params[optional], options[optional])**
 
@@ -242,10 +243,97 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         console.log(isExpired);
 
-   - *string* **date**
-   - *object* **params**
-     - *string* len
-     - *string* prefix | verb(s)
-   - *object* **options**
-     - *string* timezone
-   - *return* true | false
+    - *string* **date**
+    - *object* **params**
+      - *string* len
+      - *string* prefix | verb(s)
+    - *object* **options**
+      - *string* timezone
+    - *return* true | false
+<br><br>
+- `fake` **function (len, keys[optional])**
+
+       const len = 100;
+       const keys = {
+         name: 'firstName|lastName|findName',
+         internet: 'userName|password',
+         address: 'city'
+       };
+       const data = vascommkit.fake(len, keys);
+
+       console.log(data);
+
+       // output
+       // [ { firstName: 'Jeffrey',
+       //    lastName: 'Hills',
+       //    findName: 'Boris Collier II',
+       //    userName: 'Stella_Emard',
+       //    password: '6239pKNeKTDvfON',
+       //    city: 'Stehrside' },
+       //  { firstName: 'Reuben',
+       //    lastName: 'Armstrong',
+       //    findName: 'Elenor Nolan',
+       //    userName: 'Reta.Kulas',
+       //    password: 'rouYSPvYpX1elsA',
+       //    city: 'Gleichnerport' }, ... ]
+
+   If you want to make your own key, use this format `expectedKey@originalKey` with `@` separator. See following example:
+
+       const len = 1;
+       const keys = {
+         name: 'firstName'
+       };
+       const data = vascommkit.fake(len, keys);
+
+       console.log(data);
+
+       // output
+       // [{ firstName: 'Jeffrey' }]
+
+
+
+       const keys2 = {
+         name: 'myname@firstName'
+       };
+       const data2 = vascommkit.fake(len, keys2);
+
+       console.log(data2);
+
+       // output
+       // [{ myname: 'Jeffrey' }]
+
+ - *integer* **len**
+ - *object* **keys**
+   - *string* name
+     - *firstName* | *lastName* | *findName* | *jobTitle* | *prefix* | *suffix* | *title* | *jobDescriptor* | *jobArea* | *jobType*
+   - *string* internet
+     - *avatar* | *email* | *exampleEmail* | *userName* | *protocol* | *url* | *domainName* | *domainSuffix* | *domainWord* | *ip* | *ipv6* | *userAgent* | *color* | *mac* | *password*
+   - *string* address
+     - *zipCode* | *city* | *cityPrefix* | *citySuffix* | *streetName* | *streetAddress* | *streetSuffix* | *streetPrefix*  | *secondaryAddress* | *county* | *country* | *countryCode* | *state* | *stateAbbr* | *latitude* | *longitude*
+   - *string* commerce
+     - *color* | *department* | *productName* | *price* | *productAdjective* | *productMaterial* | *product*
+   - *string* company
+     - *suffixes* | *companyName* | *companySuffix* | *catchPhrase* | *bs* | *catchPhraseAdjective* | *catchPhraseDescriptor* | *catchPhraseNoun* | *bsAdjective* | *bsBuzz* | *bsNoun*
+   - *string* database
+     - *column* | *type* | *collation* | *engine*
+   - *string* date
+     - *past* | *future* | *between* | *recent* | *soon* | *month* | *weekday*
+   - *string* fake
+   - *string* finance
+     - *account* | *accountName* | *mask* | *amount* | *transactionType* | *currencyCode* | *currencyName* | *currencySymbol* | *bitcoinAddress* | *ethereumAddress* | *iban* | *bic*
+   - *string* hacker
+     - *abbreviation* | *adjective* | *noun* | *verb* | *ingverb* | *phrase*
+   - *string* helpers
+     - *randomize* | *slugify* | *replaceSymbolWithNumber* | *replaceSymbols* | *shuffle* | *mustache* | *createCard* | *contextualCard* | *userCard* | *createTransaction*
+   - *string* image
+     - *image* | *avatar* | *imageUrl* | *abstract* | *animals* | *business* | *cats* | *city* | *food* | *nightlife* | *fashion* | *people* | *nature* | *sports* | *technics* | *transport* | *dataUri*
+   - *string* lorem
+     - *word* | *words* | *sentence* | *slug* | *sentences* | *paragraph* | *paragraphs* | *text* | *lines*
+   - *string* phone
+     - *phoneNumber* | *phoneNumberFormat* | *phoneFormats*
+   - *string* random
+     - *number* | *arrayElement* | *objectElement* | *uuid* | *boolean* | *word* | *words* | *image* | *locale* | *alphaNumeric* | *hexaDecimal*
+   - *string* system
+     - *fileName*  *commonFileName* | *mimeType* | *commonFileType* | *commonFileExt* | *fileType* | *fileExt* | *directoryPath* | *filePath* | *semver*
+ - *return* array
+<br><br>

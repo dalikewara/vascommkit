@@ -118,3 +118,63 @@ const vascommkit = require('./index.js');
 //     // isExpired
 //     console.log('time isExpired test');
 //     console.log(vascommkit.time.isExpired('2018-02-13 13:00:00'));
+
+// // fake
+// console.log('fake test');
+// console.log(vascommkit.fake(10, {
+//   name: 'firstName|lastName|findName',
+//   internet: 'username@userName|password',
+//   address: 'city'
+// }));
+
+
+/* ------------------------------------------------------------------------- */
+// const UserModel = require('./models/UserModel.js');
+// const Oauth2ServerModel = require('./models/Oauth2ServerModel.js');
+// const userCreateParams = {
+//   password: '123456',
+//   redirectUris: '/',
+//   grants: 'password'
+// };
+
+// UserModel.redisCreateUserOauth2('dalikewara', userCreateParams, function (err, result) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(result);
+//   }
+// });
+// UserModel.redisGetUserOauth2('dalikewara', function (err, result) {
+//   if (err) {
+//     console.log(err);console.log('err');
+//   } else {
+//     console.log(result);console.log('result');
+//   }
+// });
+// Oauth2ServerModel.getClient('dalikewara', '123456', function (err, result) {
+//   if (err) {
+//     console.log(err);
+//     return err;
+//   } else {
+//     console.log(result);
+//     return result;
+//   }
+// });
+// Oauth2ServerModel.getUser('dalikewara', '123456', function (err, result) {
+//   if (err) {
+//     console.log(err);
+//     return err;
+//   } else {
+//     console.log(result);
+//     return result;
+//   }
+// });
+// const len = 100;
+// const keys = {
+//   name: 'firstName|lastName|findName',
+//   internet: 'userName|password',
+//   address: 'city'
+// };
+// const data = vascommkit.fake(len, keys);
+//
+// console.log(data);
