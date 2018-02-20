@@ -13,3 +13,6 @@
   - Preparing functions `oauth2`
   - Preparing models `Oauth2ServerModel`, `TokenModel`, `UserModel`
   - Added functions `fake`
+
+- 1.1.3
+  - Upgrade `fake` function: add localization.

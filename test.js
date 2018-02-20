@@ -172,9 +172,9 @@ const vascommkit = require('./index.js');
 // const len = 100;
 // const keys = {
 //   name: 'firstName|lastName|findName',
-//   internet: 'userName|password',
+//   internet: 'hei@userName|password',
 //   address: 'city'
 // };
 // const data = vascommkit.fake(len, keys);
-//
+
 // console.log(data);

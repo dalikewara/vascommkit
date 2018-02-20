@@ -32,7 +32,7 @@
   - `custom` get current datetime with custom format.
   - `add` add specified time to datetime.
   - `isExpired` check datetime expired.
-- `fake` Generate massive amounts of fake data. This function returned the data as an object array. So, you can easily manage it.
+- `fake` Generate massive amounts of fake data based on `faker`. This function returned the data as an object array. So, you can easily manage it.
 
 ### Changelog
 See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
@@ -251,7 +251,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
       - *string* timezone
     - *return* true | false
 <br><br>
-- `fake` **function (len, keys[optional])**
+- `fake` **function (len, keys[optional], local[optional])**
 
        const len = 100;
        const keys = {
@@ -302,38 +302,40 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
        // output
        // [{ myname: 'Jeffrey' }]
 
- - *integer* **len**
- - *object* **keys**
-   - *string* name
-     - *firstName* | *lastName* | *findName* | *jobTitle* | *prefix* | *suffix* | *title* | *jobDescriptor* | *jobArea* | *jobType*
-   - *string* internet
-     - *avatar* | *email* | *exampleEmail* | *userName* | *protocol* | *url* | *domainName* | *domainSuffix* | *domainWord* | *ip* | *ipv6* | *userAgent* | *color* | *mac* | *password*
-   - *string* address
-     - *zipCode* | *city* | *cityPrefix* | *citySuffix* | *streetName* | *streetAddress* | *streetSuffix* | *streetPrefix*  | *secondaryAddress* | *county* | *country* | *countryCode* | *state* | *stateAbbr* | *latitude* | *longitude*
-   - *string* commerce
-     - *color* | *department* | *productName* | *price* | *productAdjective* | *productMaterial* | *product*
-   - *string* company
-     - *suffixes* | *companyName* | *companySuffix* | *catchPhrase* | *bs* | *catchPhraseAdjective* | *catchPhraseDescriptor* | *catchPhraseNoun* | *bsAdjective* | *bsBuzz* | *bsNoun*
-   - *string* database
+  - *integer* **len**
+  - *object* **keys**
+    - *string* name
+      - *firstName* | *lastName* | *findName* | *jobTitle* | *prefix* | *suffix* | *title* | *jobDescriptor* | *jobArea* | *jobType*
+    - *string* internet
+      - *avatar* | *email* | *exampleEmail* | *userName* | *protocol* | *url* | *domainName* | *domainSuffix* | *domainWord* | *ip* | *ipv6* | *userAgent* | *color* | *mac* | *password*
+    - *string* address
+      - *zipCode* | *city* | *cityPrefix* | *citySuffix* | *streetName* | *streetAddress* | *streetSuffix* | *streetPrefix*  | *secondaryAddress* | *county* | *country* | *countryCode* | *state* | *stateAbbr* | *latitude* | *longitude*
+    - *string* commerce
+      - *color* | *department* | *productName* | *price* | *productAdjective* | *productMaterial* | *product*
+    - *string* company
+      - *suffixes* | *companyName* | *companySuffix* | *catchPhrase* | *bs* | *catchPhraseAdjective* | *catchPhraseDescriptor* | *catchPhraseNoun* | *bsAdjective* | *bsBuzz* | *bsNoun*
+    - *string* database
      - *column* | *type* | *collation* | *engine*
-   - *string* date
-     - *past* | *future* | *between* | *recent* | *soon* | *month* | *weekday*
-   - *string* fake
-   - *string* finance
-     - *account* | *accountName* | *mask* | *amount* | *transactionType* | *currencyCode* | *currencyName* | *currencySymbol* | *bitcoinAddress* | *ethereumAddress* | *iban* | *bic*
-   - *string* hacker
-     - *abbreviation* | *adjective* | *noun* | *verb* | *ingverb* | *phrase*
-   - *string* helpers
-     - *randomize* | *slugify* | *replaceSymbolWithNumber* | *replaceSymbols* | *shuffle* | *mustache* | *createCard* | *contextualCard* | *userCard* | *createTransaction*
-   - *string* image
-     - *image* | *avatar* | *imageUrl* | *abstract* | *animals* | *business* | *cats* | *city* | *food* | *nightlife* | *fashion* | *people* | *nature* | *sports* | *technics* | *transport* | *dataUri*
-   - *string* lorem
-     - *word* | *words* | *sentence* | *slug* | *sentences* | *paragraph* | *paragraphs* | *text* | *lines*
-   - *string* phone
-     - *phoneNumber* | *phoneNumberFormat* | *phoneFormats*
-   - *string* random
-     - *number* | *arrayElement* | *objectElement* | *uuid* | *boolean* | *word* | *words* | *image* | *locale* | *alphaNumeric* | *hexaDecimal*
-   - *string* system
-     - *fileName*  *commonFileName* | *mimeType* | *commonFileType* | *commonFileExt* | *fileType* | *fileExt* | *directoryPath* | *filePath* | *semver*
- - *return* array
+    - *string* date
+      - *past* | *future* | *between* | *recent* | *soon* | *month* | *weekday*
+    - *string* fake
+    - *string* finance
+      - *account* | *accountName* | *mask* | *amount* | *transactionType* | *currencyCode* | *currencyName* | *currencySymbol* | *bitcoinAddress* | *ethereumAddress* | *iban* | *bic*
+    - *string* hacker
+      - *abbreviation* | *adjective* | *noun* | *verb* | *ingverb* | *phrase*
+    - *string* helpers
+      - *randomize* | *slugify* | *replaceSymbolWithNumber* | *replaceSymbols* | *shuffle* | *mustache* | *createCard* | *contextualCard* | *userCard* | *createTransaction*
+    - *string* image
+      - *image* | *avatar* | *imageUrl* | *abstract* | *animals* | *business* | *cats* | *city* | *food* | *nightlife* | *fashion* | *people* | *nature* | *sports* | *technics* | *transport* | *dataUri*
+    - *string* lorem
+      - *word* | *words* | *sentence* | *slug* | *sentences* | *paragraph* | *paragraphs* | *text* | *lines*
+    - *string* phone
+      - *phoneNumber* | *phoneNumberFormat* | *phoneFormats*
+    - *string* random
+      - *number* | *arrayElement* | *objectElement* | *uuid* | *boolean* | *word* | *words* | *image* | *locale* | *alphaNumeric* | *hexaDecimal*
+    - *string* system
+      - *fileName*  *commonFileName* | *mimeType* | *commonFileType* | *commonFileExt* | *fileType* | *fileExt* | *directoryPath* | *filePath* | *semver*
+  - *string* local | default 'id_ID'
+    - *az* | *cz* | *de* | *de_AT* | *de_CH* | *en* | *en_AU* ... More see -> [https://github.com/Marak/Faker.js](https://github.com/Marak/Faker.js)
+  - *return* array
 <br><br>

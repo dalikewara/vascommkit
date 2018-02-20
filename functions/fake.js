@@ -1,8 +1,7 @@
 "use strict";
 
-const faker = require('faker');
-
-exports.fake = function (len, keys) {
+exports.fake = function (len, keys, local) {
+  const faker = local ? require('faker/locale/' + local) : require('faker/locale/id_ID');
   const binding = Object.keys(keys);
   var n = 0;
   var data = [];
@@ -14,7 +13,7 @@ exports.fake = function (len, keys) {
     var z = 1;
 
     binding.map(function (x) {
-      module.exports.binding(x, keys[x], function (result) {
+      module.exports.binding(faker, x, keys[x], function (result) {
         res = Object.assign(res, result);
 
         if (y == z) {
@@ -29,7 +28,7 @@ exports.fake = function (len, keys) {
   return data;
 };
 
-exports.binding = function (prefix, value, callback) {
+exports.binding = function (faker, prefix, value, callback) {
   value = value.replace(/\s+/g, '').split('|');
   var n = 0;
   var len = value.length;
