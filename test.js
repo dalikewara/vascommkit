@@ -33,49 +33,36 @@ const vascommkit = require('./index.js');
 //     // string
 //     console.log('cemtex string test');
 //     vascommkit.cemtex.string({
-//       // optional
 //       header: {
-//         // require
 //         keys: {
-//           header1: { type: 'rps', length: 40, default: '' },
-//           header2: { type: 'lpz', length: 12, default: '0' }
+//           key1: { type: 'rps', length: 8 },
+//           key2: { type: 'lpz', length: 4 }
 //         },
-//         // require
-//         data: { header1: 'Data1', header2: 'Data2' }
+//         data: { key1: 'Header1', key2: '90' }
 //       },
-//       // optional
 //       detail: {
-//         // require
 //         keys: {
-//           name: { type: 'rps', length: 40, default: '' },
-//           phone: { type: 'lpz', length: 12, default: '0' }
+//           key1: { type: 'rps', length: 10 },
+//           key2: { type: 'lpz', length: 12 }
 //         },
-//         // require
 //         data: [
-//           { name: 'Linus Torvald', phone: '08888888' },
-//           { name: 'Dali Kewara', phone: '09999999' }
+//           { key1: 'Detail1 A', key2: '12345' },
+//           { key1: 'Detail1 B', key2: '67890' }
 //         ],
-//         // optional
-//         // description: {
-//         //   keys: {}
-//         // }
 //       },
-//       // optional
 //       footer: {
-//         // require
 //         keys: {
-//           footer1: { type: 'rps', length: 40, default: '' },
-//           footer2: { type: 'lpz', length: 12, default: '0' }
+//           key1: { type: 'rps', length: 9 },
+//           key2: { type: 'lpz', length: 4 }
 //         },
-//         // require
-//         data: { footer1: 'Data1', footer2: 'Data2' }
+//         data: { key1: 'Footer1', key2: '2' }
 //       }
-//     }, {
-//       enter: false, // default
-//       default: ' ', // default
-//       charLength: 160, // default
-//     }, function (err, string) {
-//       console.log(string);
+//     }, function (err, result) {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         console.log(result);
+//       }
 //     });
 
 // // time
@@ -176,3 +163,169 @@ const vascommkit = require('./index.js');
 
 
 /* ------------------------------------------------------------------------- */
+// var data = [{
+//   billerCode: '0004',
+//   regionCode: '0201',
+//   billingName: 'TELKOM',
+//   cardNo: '',
+//   cardName: '',
+//   paymentMethod: '',
+//   rekeningDebet: '',
+//   amntBilling: '',
+//   feeAmt: '',
+//   paymentNarration: '',
+//   inoviceNumber: '',
+//   journal: '',
+//   multiplier: '',
+//   referensiNumber: '',
+//   multiPaymentFlag: '',
+//   amntMulti1: '',
+//   amntMulti2: '',
+//   amntMulti3: '',
+//   amntMulti4: '',
+//   amntMulti5: ''
+// }, {
+//   billerCode: '0005',
+//   regionCode: '0201',
+//   billingName: 'BPJS',
+//   cardNo: '',
+//   cardName: '',
+//   paymentMethod: '',
+//   rekeningDebet: '',
+//   amntBilling: '',
+//   feeAmt: '',
+//   paymentNarration: '',
+//   inoviceNumber: '',
+//   journal: '',
+//   multiplier: '',
+//   referensiNumber: '',
+//   multiPaymentFlag: '',
+//   amntMulti1: '',
+//   amntMulti2: '',
+//   amntMulti3: '',
+//   amntMulti4: '',
+//   amntMulti5: ''
+// }, {
+//   billerCode: '0006',
+//   regionCode: '0201',
+//   billingName: 'TELKOM',
+//   cardNo: '',
+//   cardName: '',
+//   paymentMethod: '',
+//   rekeningDebet: '',
+//   amntBilling: '',
+//   feeAmt: '',
+//   paymentNarration: '',
+//   inoviceNumber: '',
+//   journal: '',
+//   multiplier: '',
+//   referensiNumber: '',
+//   multiPaymentFlag: '',
+//   amntMulti1: '',
+//   amntMulti2: '',
+//   amntMulti3: '',
+//   amntMulti4: '',
+//   amntMulti5: ''
+// }];
+
+// vascommkit.cemtex.string({
+//   header: {
+//     keys: {
+//       record: { type: 'lpz', length: 1},
+//       branch: { type: 'lpz', length: 4},
+//       filler1: { type: 'lpz', length: 5},
+//       date: { type: 'rps', length: 8},
+//       unique: { type: 'rps', length: 20},
+//       filler2: { type: 'rps', length: 233}
+//     },
+//     data: {
+//     	record: '0',
+//     	branch: '0099',
+//     	filler1: '0001',
+//     	date: '21022018',
+//     	unique: 'ABCDE123sd20',
+//     	filler2: ''
+//     }
+//   },
+//   detail: {
+//     keys: {
+//       record: { type: 'lpz', length: 1, default: 1},
+//       billerCode: { type: 'lpz', length: 4},
+//       regionCode: { type: 'lpz', length: 4},
+//       billingName: { type: 'rps', length: 20},
+//       cardNo: { type: 'lpz', length: 18},
+//       cardName: { type: 'rps', length: 20},
+//       paymentMethod: { type: 'lpz', length: 1},
+//       rekeningDebet: { type: 'lpz', length: 17},
+//       amntBilling: { type: 'lpz', length: 15},
+//       feeAmt: { type: 'lpz', length: 15},
+//       paymentNarration: { type: 'rps', length: 50},
+//       inoviceNumber: { type: 'lpz', length: 11},
+//       journal: { type: 'lps', length: 6},
+//       multiplier: { type: 'lpz', length: 1},
+//       referensiNumber: { type: 'lpz', length: 12},
+//       multiPaymentFlag: { type: 'rps', length: 1},
+//       amntMulti1: { type: 'lpz', length: 15},
+//       amntMulti2: { type: 'lpz', length: 15},
+//       amntMulti3: { type: 'lpz', length: 15},
+//       amntMulti4: { type: 'lpz', length: 15},
+//       amntMulti5: { type: 'lpz', length: 15}
+//     },
+//     data: data
+//   },
+//   footer: {
+//     keys: {
+//       record: { type: 'lpz', length: 1},
+//       count: { type: 'lpz', length: 6},
+//       total: { type: 'lpz', length: 17},
+//       filler: { type: 'rps', length: 253}
+//     },
+//     data: {
+//     	record: '9',
+//     	count: '2',
+//     	total: '1200',
+//     	filler: ''
+//     }
+//   }
+// }, {
+//   enter: false, // default
+//   default: ' ', // default
+//   charLength: 271, // default
+// }, function (err, string) {
+//   console.log(string);
+// });
+
+// vascommkit.cemtex.string({
+//           header: {
+//             keys: {
+//               key1: { type: 'rps', length: 8 },
+//               key2: { type: 'lpz', length: 9 }
+//             },
+//             data: { key1: 'Header1', key2: 'Header2' }
+//           },
+//           detail: {
+//             keys: {
+//               key1: { type: 'rps', length: 10 },
+//               key2: { type: 'lpz', length: 12 }
+//             },
+//             data: [
+//               { key1: 'Detail1 A', key2: 'Detail2 A' },
+//               { key1: 'Detail1 B', key2: 'Detail2 B' }
+//             ],
+//           },
+//           footer: {
+//             keys: {
+//               key1: { type: 'rps', length: 9 },
+//               key2: { type: 'lpz', length: 11 }
+//             },
+//             data: { key1: 'Footer1', key2: 'Footer2' }
+//           }
+//         }, {
+//           charLength: '40'
+//         }, function (err, result) {
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             console.log(result);
+//           }
+//         });

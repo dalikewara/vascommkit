@@ -7,7 +7,7 @@
 ### Installation
       npm install vascommkit --save
 
-### Update to the latest version (1.1.4)
+### Update to the latest version (1.1.5)
       npm update vascommkit --save
 
 ### Initialization
@@ -52,6 +52,8 @@
   - `limit` truncates the given string at the specified length.
   - `random` generates a random string of the specified length.
   - `slug` generates a URL friendly "slug" from the given string.
+- `cemtex` Cemtex file format is a format used by banks to allow for batch transactions.
+  - `string` Generate a cemtex string by the given data. You can make your custom standard bank format.
 
 ### Changelog
 See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
@@ -367,6 +369,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *string* **str**
     - *return* string
+<br><br>
   - `snakeCase` **function (str)**
 
         conts str = vascommkit.string.snakeCase('foo Bar');
@@ -375,6 +378,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *string* **str**
     - *return* string
+<br><br>
   - `titleCase` **function (str)**
 
         conts str = vascommkit.string.titleCase('foo Bar');
@@ -383,6 +387,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *string* **str**
     - *return* string
+<br><br>
   - `studlyCase` **function (str)**
 
         conts str = vascommkit.string.studlyCase('foo Bar');
@@ -391,6 +396,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *string* **str**
     - *return* string
+<br><br>
   - `basename` **function (ns, str)**
 
         conts str = vascommkit.string.basename('/', 'Foo/Bar');
@@ -400,6 +406,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *char* **ns** | `/`, `-`, `+`, etc...
     - *string* **str**
     - *return* string
+<br><br>
   - `endsWith` **function (e, str)**
 
         conts str = vascommkit.string.endsWith('John', 'Smith John');
@@ -409,6 +416,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* true | false
+<br><br>
   - `startsWith` **function (e, str)**
 
         conts str = vascommkit.string.startsWith('Smith', 'Smith John');
@@ -418,6 +426,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* true | false
+<br><br>
   - `after` **function (e, str)**
 
         conts str = vascommkit.string.after('Smith', 'Smith John');
@@ -427,6 +436,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* string
+<br><br>
   - `before` **function (e, str)**
 
         conts str = vascommkit.string.before('John', 'Smith John');
@@ -436,6 +446,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* string
+<br><br>
   - `finish` **function (e, str)**
 
         conts str = vascommkit.string.finish('John', 'Smith John');
@@ -447,6 +458,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* string
+<br><br>
   - `start` **function (e, str)**
 
         conts str = vascommkit.string.start('Smith', 'Smith John');
@@ -458,6 +470,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* string
+<br><br>
   - `contains` **function (e, str)**
 
         conts str = vascommkit.string.contains('John', 'Smith John');
@@ -467,6 +480,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **e**
     - *string* **str**
     - *return* true | false
+<br><br>
   - `limit` **function (n, str, prefix[optional])**
 
         conts str = vascommkit.string.limit(12, 'Lorem ipsum dolor sit amet');
@@ -479,6 +493,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *string* **str**
     - *string* **prefix**
     - *return* string
+<br><br>
   - `random` **function (n)**
 
         conts str = vascommkit.string.random(3);
@@ -487,6 +502,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *integer* **n**
     - *return* string
+<br><br>
   - `slug` **function (str, prefix[optional])**
 
         conts str = vascommkit.string.slug('Smith John');
@@ -496,5 +512,203 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
         console.log(str2); // output 'smith+john'
 
     - *string* **str**
-    - *char* **prefix** | `-`, `+`, etc... | default `-`
+    - *char* **prefix** | `-`, `+`, etc... | default is `-`
+    - *return* string
+<br><br>
+- `cemtex` object {}
+  - `string` **function (params, options[optional]|callback, callback)**
+
+    Here is basic example:
+        
+        vascommkit.cemtex.string({
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9 }
+            },
+            data: { key1: 'Header1', key2: 'Header2' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12 }
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B', key2: 'Detail2 B' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11 }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' }
+          }
+        }, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(result);
+          }
+        });
+
+        // output result
+        // Header1 0090                                                                                                                                                    Detail1 A 000000012345                                                                                                                                          Detail1 B 000000067890                                                                                                                                          Footer1  0002                                                                                                                                                   
+
+    Example above returned a single line cemtex string. The default `charLength` of each `params` is 160. So it has 160 header, 160 detail (per 1 row), and 160 footer chars length. If we do split, it looks like this:
+
+        // header
+        'Header1 0090                                                                                                                                                    ' // 160
+
+        // detail
+        'Detail1 A 000000012345                                                                                                                                          ' // 160
+        'Detail1 B 000000067890                                                                                                                                          ' // 160
+
+        // footer
+        'Footer1  0002                                                                                                                                                   ' // 160
+
+    Each `params` (header, detail, footer) has 2 required properties: `keys` & `data`. It must be the same object. If `keys` has key 'name', so `data` must contains 'name'.
+
+        header: {
+
+          // Configuration of the main data. 'type' & 'length' always required.
+          keys: {
+            name: { type: 'lps', length: 15}, // So, the main data 'data.name' is lps (Left Padding Space) and it has max 15 length.
+            phone: { type: 'lpz', length: 15} // So, the main data 'data.phone' is lpz (Left Padding Zero) and it has max 15 length.
+          },
+
+          // The main data.
+          data: { 
+            name: 'John Smith', // `data.name` = '     John Smith'
+            phone: '12345', // `data.phone` = '000000000012345'
+          }
+
+        }
+
+        // Header = '     John Smith000000000012345'
+
+    Specifically for `params` 'detail', property `data` is an array, not object, but stil have the same structure.
+
+        detail: {
+
+          // Configuration of the main data. 'type' & 'length' always required.
+          keys: {
+            name: { type: 'lps', length: 15}, // So, the main data 'data.name' is lps (Left Padding Space) and it has max 15 length.
+            phone: { type: 'lpz', length: 15} // So, the main data 'data.phone' is lpz (Left Padding Zero) and it has max 15 length.
+          },
+
+          // The main data.
+          data: [
+            { 
+              name: 'John Smith', // `data.name` = '     John Smith'
+              phone: '12345', // `data.phone` = '000000000012345'
+            },
+            { 
+              name: 'Matthew Alex', // `data.name` = '   Matthew Alex'
+              phone: '987654321', // `data.phone` = '0000987654321'
+            }
+          ]
+
+        }
+
+        // Detail = '     John Smith000000000012345   Matthew Alex0000987654321'
+
+
+    Here more example... Remember that `params` (header, detail, footer) are optional.
+
+        // Without header
+        vascommkit.cemtex.string({
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12 }
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B', key2: 'Detail2 B' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11 }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' }
+          }
+        }, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(result);
+          }
+        });
+
+        // output result
+        // Detail1 A 000000012345                                                                                                                                          Detail1 B 000000067890                                                                                                                                          Footer1  0002                                                                                                                                                   
+
+
+        // With an option.
+        vascommkit.cemtex.string({
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9 }
+            },
+            data: { key1: 'Header1', key2: 'Header2' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12 }
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B', key2: 'Detail2 B' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11 }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' }
+          }
+        }, {
+          charLength: '40'
+        }, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(result);
+          }
+        });
+
+        // output result
+        // Header1 00Header2                       Detail1 A 000Detail2 A                  Detail1 B 000Detail2 B                  Footer1  0000Footer2                    
+
+    - *object* **params**
+      - *object* header | optional
+        - *object* keys | required
+          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *length* | required
+          - *default* | optional | default value if key not found or it has null value.
+        - *object* data | required
+      - *object* detail | optional
+        - *object* keys | required
+          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *length* | required
+          - *default* | optional | default value if key not found or it has null value.
+        - *array* data | required
+      - *object* footer | optional
+        - *object* keys | required
+          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *length* | required
+          - *default* | optional | default value if key not found or it has null value.
+        - *object* data | required
+    - *object* **options** | make it as callback[function] if you dont want to pass an option.
+      - *boolean* enter | true (row string `\n`) or false (single string) | default is `false`
+      - *char* default | `0`, `_`, etc... | default is ' '
+      - *integer* charLength | default is `160`
+    - *function* **callback**
     - *return* string

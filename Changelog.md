@@ -22,3 +22,6 @@
   - Removed models `Oauth2ServerModel`, `TokenModel`, `UserModel`
   - Canceled prepared functions `oauth2`
   - Removed dependencies `redis`, `oauth2-server`.
+
+- 1.1.5
+  - - Added functions `cemtex`

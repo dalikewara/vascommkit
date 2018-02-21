@@ -18,7 +18,10 @@
     "data",
     "looper",
     "time",
-    "soa"
+    "soa",
+    "ctx",
+    "cemtex",
+    "aba"
   ],
   "author": "Dali Kewara",
   "license": "MIT",
