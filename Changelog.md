@@ -16,3 +16,9 @@
 
 - 1.1.3
   - Upgrade `fake` function: add localization.
+
+- 1.1.4
+  - Added functions `string`
+  - Removed models `Oauth2ServerModel`, `TokenModel`, `UserModel`
+  - Canceled prepared functions `oauth2`
+  - Removed dependencies `redis`, `oauth2-server`.

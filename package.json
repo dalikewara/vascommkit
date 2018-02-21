@@ -3,9 +3,6 @@
   "version": "1.1.3",
   "description": "A free toolkit for your needed",
   "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalikewara/vascommkit.git"
@@ -15,7 +12,13 @@
   },
   "keywords": [
     "toolkit",
-    "vascomm"
+    "vascomm",
+    "string",
+    "fake",
+    "data",
+    "looper",
+    "time",
+    "soa"
   ],
   "author": "Dali Kewara",
   "license": "MIT",
@@ -24,8 +27,6 @@
     "faker": "^4.1.0",
     "md5": "^2.2.1",
     "moment": "^2.20.1",
-    "moment-timezone": "^0.5.14",
-    "oauth2-server": "^3.0.0",
-    "redis": "^2.8.0"
+    "moment-timezone": "^0.5.14"
   }
 }

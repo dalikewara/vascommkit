@@ -127,54 +127,52 @@ const vascommkit = require('./index.js');
 //   address: 'city'
 // }));
 
+// // string
+//     // camelCase
+//     console.log('string camelCase test');
+//     console.log(vascommkit.string.camelCase('foo bar'));
+//     // snakeCase
+//     console.log('string snakeCase test');
+//     console.log(vascommkit.string.snakeCase('foo Bar'));
+//     // titleCase
+//     console.log('string titleCase test');
+//     console.log(vascommkit.string.titleCase('foo Bar'));
+//     // studlyCase
+//     console.log('string studlyCase test');
+//     console.log(vascommkit.string.studlyCase('foo Bar'));
+//     // basename
+//     console.log('string basename test');
+//     console.log(vascommkit.string.basename('/', 'Foo/Bar'));
+//     // endsWith
+//     console.log('string endsWith test');
+//     console.log(vascommkit.string.endsWith('John', 'Smith John'));
+//     // startsWith
+//     console.log('string startsWith test');
+//     console.log(vascommkit.string.startsWith('Smith', 'Smith John'));
+//     // after
+//     console.log('string after test');
+//     console.log(vascommkit.string.after('Smith', 'Smith John'));
+//     // before
+//     console.log('string before test');
+//     console.log(vascommkit.string.before('John', 'Smith John'));
+//     // finish
+//     console.log('string finish test');
+//     console.log(vascommkit.string.finish('Alex', 'Smith John'));
+//     // start
+//     console.log('string start test');
+//     console.log(vascommkit.string.start('Alex', 'Smith John'));
+//     // contains
+//     console.log('string contains test');
+//     console.log(vascommkit.string.contains('John', 'Smith John'));
+//     // limit
+//     console.log('string limit test');
+//     console.log(vascommkit.string.limit(12, 'Lorem ipsum dolor sit amet'));
+//     // random
+//     console.log('string random test');
+//     console.log(vascommkit.string.random(3));
+//     // slug
+//     console.log('string slug test');
+//     console.log(vascommkit.string.slug('Smith John', '+'));
+
 
 /* ------------------------------------------------------------------------- */
-// const UserModel = require('./models/UserModel.js');
-// const Oauth2ServerModel = require('./models/Oauth2ServerModel.js');
-// const userCreateParams = {
-//   password: '123456',
-//   redirectUris: '/',
-//   grants: 'password'
-// };
-
-// UserModel.redisCreateUserOauth2('dalikewara', userCreateParams, function (err, result) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(result);
-//   }
-// });
-// UserModel.redisGetUserOauth2('dalikewara', function (err, result) {
-//   if (err) {
-//     console.log(err);console.log('err');
-//   } else {
-//     console.log(result);console.log('result');
-//   }
-// });
-// Oauth2ServerModel.getClient('dalikewara', '123456', function (err, result) {
-//   if (err) {
-//     console.log(err);
-//     return err;
-//   } else {
-//     console.log(result);
-//     return result;
-//   }
-// });
-// Oauth2ServerModel.getUser('dalikewara', '123456', function (err, result) {
-//   if (err) {
-//     console.log(err);
-//     return err;
-//   } else {
-//     console.log(result);
-//     return result;
-//   }
-// });
-// const len = 100;
-// const keys = {
-//   name: 'firstName|lastName|findName',
-//   internet: 'hei@userName|password',
-//   address: 'city'
-// };
-// const data = vascommkit.fake(len, keys);
-
-// console.log(data);
