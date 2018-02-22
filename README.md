@@ -7,7 +7,7 @@
 ### Installation
       npm install vascommkit --save
 
-### Update to the latest version (1.1.5)
+### Update to the latest version (1.1.6)
       npm update vascommkit --save
 
 ### Initialization
@@ -53,7 +53,8 @@
   - `random` generates a random string of the specified length.
   - `slug` generates a URL friendly "slug" from the given string.
 - `cemtex` Cemtex file format is a format used by banks to allow for batch transactions.
-  - `string` Generate a cemtex string by the given data. You can make your custom standard bank format.
+  - `string` Generate a cemtex string from the given data. You can make your custom standard bank format.
+  - `generate` Generate a cemtex file from the given data. You can make your custom standard bank format.
 
 ### Changelog
 See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
@@ -568,7 +569,7 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
         // footer
         'Footer1  0002                                                                                                                                                   ' // 160
 
-    Each `params` (header, detail, footer) has 2 required properties: `keys` & `data`. It must be the same object. If `keys` has key 'name', so `data` must contains 'name'.
+    Each `params` (header, detail, footer) has 2 required properties: `keys` & `data`. It should be the same object. If `keys` has key 'name', so `data` should be contains 'name'. But don't worry, in most cases, you can ignore & not follow this conditions.
 
         header: {
 
@@ -646,8 +647,8 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         // output result
         // Detail1 A 000000012345                                                                                                                                          Detail1 B 000000067890                                                                                                                                          Footer1  0002                                                                                                                                                   
-
-
+        
+        
         // With an option.
         vascommkit.cemtex.string({
           header: {
@@ -686,25 +687,125 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
         // output result
         // Header1 00Header2                       Detail1 A 000Detail2 A                  Detail1 B 000Detail2 B                  Footer1  0000Footer2                    
+        
+        
+        
+        // This all configurations is valid.
+        {
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9, default: '0' }
+            },
+            data: { key1: 'Header1' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12 } // default is ' '
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11 }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' }
+          }
+        }
+        
+        
+        {
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9, from: 'key1' }
+            },
+            data: { key1: 'Header1' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12, from: 'key1' }
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B' }
+            ],
+          }
+        }
+        
+        
+        {
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9, default: 'key1' }
+            },
+            data: { key2: 'Header1' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12, from: 'key1' }
+            },
+            data: [
+              { key2: 'Detail2 A' },
+              { }
+            ],
+          }
+        }
+        
+        
+        {
+          detail: {
+            keys: {
+              amount: { type: 'lpz', length: 10 },
+              key2: { type: 'lpz', length: 12 }
+            },
+            data: [
+              { amount: '1000', key2: 'Detail2 A' },
+              { amount: '1200' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11, countFromDetail: 'amount' }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' } // key2 = 2200
+          }
+        }
 
     - *object* **params**
       - *object* header | optional
         - *object* keys | required
-          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *type* | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
           - *length* | required
           - *default* | optional | default value if key not found or it has null value.
+          - *decimal* | optional | true or false | default is `true`
+          - *from* | optional | get value based on `params` property `keys`.
         - *object* data | required
       - *object* detail | optional
         - *object* keys | required
-          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *type* | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
           - *length* | required
           - *default* | optional | default value if key not found or it has null value.
+          - *decimal* | optional | true or false | default is `true`
+          - *from* | optional | get value based on `params` property `keys`.
         - *array* data | required
       - *object* footer | optional
         - *object* keys | required
-          - `type` | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
+          - *type* | required | 'lps', 'lpz', 'rps', & 'rpz' | default is `lps`
           - *length* | required
           - *default* | optional | default value if key not found or it has null value.
+          - *decimal* | optional | true or false | default is `true`
+          - *from* | optional | get value based on `params` property `keys`.
+          - *countFromDetail* | optional | count amount from specified `detail` data key.
         - *object* data | required
     - *object* **options** | make it as callback[function] if you dont want to pass an option.
       - *boolean* enter | true (row string `\n`) or false (single string) | default is `false`
@@ -712,3 +813,41 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
       - *integer* charLength | default is `160`
     - *function* **callback**
     - *return* string
+<br><br>
+  - `generate` **function (fullpath, params, options[optional]|callback, callback)**
+
+        vascommkit.cemtex.generate(__dirname + '/test.ctx', {
+          header: {
+            keys: {
+              key1: { type: 'rps', length: 8 },
+              key2: { type: 'lpz', length: 9 }
+            },
+            data: { key1: 'Header1', key2: 'Header2' }
+          },
+          detail: {
+            keys: {
+              key1: { type: 'rps', length: 10 },
+              key2: { type: 'lpz', length: 12 }
+            },
+            data: [
+              { key1: 'Detail1 A', key2: 'Detail2 A' },
+              { key1: 'Detail1 B', key2: 'Detail2 B' }
+            ],
+          },
+          footer: {
+            keys: {
+              key1: { type: 'rps', length: 9 },
+              key2: { type: 'lpz', length: 11 }
+            },
+            data: { key1: 'Footer1', key2: 'Footer2' }
+          }
+        }, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(result);
+          }
+        });
+
+    - *string* **fullpath**
+    - **params, options, callback** follow the `cemtex.string` instructions.

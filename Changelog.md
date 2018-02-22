@@ -24,4 +24,7 @@
   - Removed dependencies `redis`, `oauth2-server`.
 
 - 1.1.5
-  - - Added functions `cemtex`
+  - Added functions `cemtex`
+
+- 1.1.6
+  - Upgrade `cemtex` function: add some options, add `cemtex.generate` function.

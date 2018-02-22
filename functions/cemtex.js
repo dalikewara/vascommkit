@@ -1,5 +1,6 @@
 "use strict";
 
+const fs = require('fs');
 const async = require('async');
 const messages = require('../messages.js');
 const lps = require('./lps.js').lps;
@@ -23,11 +24,12 @@ exports.string = function (params, options, callback) {
     var header = '';
     var detail = '';
     var footer = '';
+    var counts = [];
     options.enter = options.enter || false;
     options.default = options.default || ' ';
     options.charLength = options.charLength || 160;
 
-    async.parallel([
+    async.series([
       function (callback) {
         if (!params.header) {
           callback(null, header);
@@ -41,12 +43,27 @@ exports.string = function (params, options, callback) {
           var a = 0;
 
           APP.looper(a, keysLen, function (n) {
-            var def = params.header.keys[keys[n]].default ? params.header.keys[keys[n]].default : ' '; 
-            var type = params.header.keys[keys[n]].type ? params.header.keys[keys[n]].type : 'lps';
-            var length = params.header.keys[keys[n]].length ? params.header.keys[keys[n]].length : 'lps';
-            var val = params.header.data[keys[n]] ? params.header.data[keys[n]] : def;
-            val = APP[type](length, val);
-            header += val;
+            var from = params.header.keys[keys[n]].from ? params.header.keys[keys[n]].from : undefined;
+
+            if (from) {
+              var decimal = (params.header.keys[from].decimal != undefined && params.header.keys[from].decimal == false) ? false : true;
+              var def = params.header.keys[from].default ? params.header.keys[from].default : ' ';
+              var type = params.header.keys[from].type ? params.header.keys[from].type : 'lps';
+              var length = params.header.keys[from].length ? params.header.keys[from].length : 'lps';
+              var val = params.header.data[from] ? params.header.data[from] : def;
+              val = (decimal == false) ? val.replace(/\./g, '') : val;
+              val = APP[type](length, val);
+              header += val;
+            } else {
+              var decimal = (params.header.keys[keys[n]].decimal != undefined && params.header.keys[keys[n]].decimal == false) ? false : true;
+              var def = params.header.keys[keys[n]].default ? params.header.keys[keys[n]].default : ' ';
+              var type = params.header.keys[keys[n]].type ? params.header.keys[keys[n]].type : 'lps';
+              var length = params.header.keys[keys[n]].length ? params.header.keys[keys[n]].length : 'lps';
+              var val = params.header.data[keys[n]] ? params.header.data[keys[n]] : def;
+              val = (decimal == false) ? val.replace(/\./g, '') : val;
+              val = APP[type](length, val);
+              header += val;
+            }
           }, function () {
             var q1 = header.length;
 
@@ -74,12 +91,45 @@ exports.string = function (params, options, callback) {
             var f = function (keys, data, keysLen, dataLen, keysLenX, dataLenX, a, g, m) {
               var d = '';
               APP.looper(a, keysLen, function (n) {
-                var def = params.detail.keys[keys[n]].default ? params.detail.keys[keys[n]].default : ' '; 
-                var type = params.detail.keys[keys[n]].type ? params.detail.keys[keys[n]].type : 'lps';
-                var length = params.detail.keys[keys[n]].length ? params.detail.keys[keys[n]].length : 'lps';
-                var val = params.detail.data[m][keys[n]] ? params.detail.data[m][keys[n]] : def;
-                val = APP[type](length, val);
-                d += val;
+                var from = params.detail.keys[keys[n]].from ? params.detail.keys[keys[n]].from : undefined;
+
+                if (from) {
+                  var decimal = (params.detail.keys[from].decimal != undefined && params.detail.keys[from].decimal == false) ? false : true;
+                  var def = params.detail.keys[from].default ? params.detail.keys[from].default : ' ';
+                  var type = params.detail.keys[from].type ? params.detail.keys[from].type : 'lps';
+                  var length = params.detail.keys[from].length ? params.detail.keys[from].length : 'lps';
+                  var val = params.detail.data[m][from] ? params.detail.data[m][from] : def;
+                  val = (decimal == false) ? val.replace(/\./g, '') : val;
+                  val = APP[type](length, val);
+                  var numVal = Number(val);
+                  d += val;
+
+                  if (numVal) {
+                    if ((counts[keys[n]] && counts[keys[n]] != 0) || counts[keys[n]] == 0) {
+                      counts[keys[n]] += numVal;
+                    } else {
+                      counts[keys[n]] = numVal;
+                    }
+                  }
+                } else {
+                  var decimal = (params.detail.keys[keys[n]].decimal != undefined && params.detail.keys[keys[n]].decimal == false) ? false : true;
+                  var def = params.detail.keys[keys[n]].default ? params.detail.keys[keys[n]].default : ' ';
+                  var type = params.detail.keys[keys[n]].type ? params.detail.keys[keys[n]].type : 'lps';
+                  var length = params.detail.keys[keys[n]].length ? params.detail.keys[keys[n]].length : 'lps';
+                  var val = params.detail.data[m][keys[n]] ? params.detail.data[m][keys[n]] : def;
+                  val = (decimal == false) ? val.replace(/\./g, '') : val;
+                  val = APP[type](length, val);
+                  var numVal = Number(val);
+                  d += val;
+
+                  if (numVal) {
+                    if ((counts[keys[n]] && counts[keys[n]] != 0) || counts[keys[n]] == 0) {
+                      counts[keys[n]] += numVal;
+                    } else {
+                      counts[keys[n]] = numVal;
+                    }
+                  }
+                }
               }, function () {
                 var q1 = d.length;
 
@@ -130,12 +180,31 @@ exports.string = function (params, options, callback) {
           var a = 0;
 
           APP.looper(a, keysLen, function (n) {
-            var def = params.footer.keys[keys[n]].default ? params.footer.keys[keys[n]].default : ' '; 
-            var type = params.footer.keys[keys[n]].type ? params.footer.keys[keys[n]].type : 'lps';
-            var length = params.footer.keys[keys[n]].length ? params.footer.keys[keys[n]].length : 'lps';
-            var val = params.footer.data[keys[n]] ? params.footer.data[keys[n]] : def;
-            val = APP[type](length, val);
-            footer += val;
+            var from = params.footer.keys[keys[n]].from ? params.footer.keys[keys[n]].from : undefined;
+
+            if (from) {
+              var countFromDetail = (params.footer.keys[keys[n]].countFromDetail) ? params.footer.keys[keys[n]].countFromDetail : undefined;
+              var decimal = (params.footer.keys[from].decimal != undefined && params.footer.keys[from].decimal == false) ? false : true;
+              var def = params.footer.keys[from].default ? params.footer.keys[from].default : ' '; 
+              var type = params.footer.keys[from].type ? params.footer.keys[from].type : 'lps';
+              var length = params.footer.keys[from].length ? params.footer.keys[from].length : 'lps';
+              var val = params.footer.data[from] ? params.footer.data[from] : def;
+              val = countFromDetail ? counts[countFromDetail] : val;
+              val = (decimal == false) ? val.replace(/\./g, '') : val;
+              val = APP[type](length, val);
+              footer += val;
+            } else {
+              var countFromDetail = (params.footer.keys[keys[n]].countFromDetail) ? params.footer.keys[keys[n]].countFromDetail : undefined;
+              var decimal = (params.footer.keys[keys[n]].decimal != undefined && params.footer.keys[keys[n]].decimal == false) ? false : true;
+              var def = params.footer.keys[keys[n]].default ? params.footer.keys[keys[n]].default : ' '; 
+              var type = params.footer.keys[keys[n]].type ? params.footer.keys[keys[n]].type : 'lps';
+              var length = params.footer.keys[keys[n]].length ? params.footer.keys[keys[n]].length : 'lps';
+              var val = params.footer.data[keys[n]] ? params.footer.data[keys[n]] : def;
+              val = countFromDetail ? counts[countFromDetail] : val;
+              val = (decimal == false) ? val.replace(/\./g, '') : val;
+              val = APP[type](length, val);
+              footer += val;
+            }
           }, function () {
             var q1 = footer.length;
 
@@ -158,4 +227,20 @@ exports.string = function (params, options, callback) {
         callback(null, string);
       }
     });
+};
+
+exports.generate = function (fullpath, params, options, callback) {
+  module.exports.string(params, options, function (err, result) {
+    if (err) {
+      callback(err);
+    } else {
+      fs.writeFile(fullpath, result, function(err) {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, result);
+        }
+      });
+    }
+  });
 };
