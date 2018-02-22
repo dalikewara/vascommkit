@@ -1,10 +1,10 @@
 "use strict";
 
-const messages = require('../messages.js');
+const messages = require('./messages.js');
 
-exports.rpz = function (n, val) {
+exports.rps = function (n, val) {
     if (!n || !val) {
-        throw new Error(messages.rpz.missingArgument);
+        throw new Error(messages.rps.missingArgument);
     }
 
     n = Number(n);
@@ -22,6 +22,6 @@ exports.rpz = function (n, val) {
     if (len < n) {
         const x = n - len;
 
-        return val + '0'.repeat(x);
+        return val + ' '.repeat(x);
     }
 }

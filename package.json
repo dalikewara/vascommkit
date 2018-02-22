@@ -2,7 +2,7 @@
   "name": "vascommkit",
   "version": "1.1.6",
   "description": "A free toolkit for your needed",
-  "main": "index.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalikewara/vascommkit.git"

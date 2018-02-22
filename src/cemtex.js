@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const async = require('async');
-const messages = require('../messages.js');
+const messages = require('./messages.js');
 const lps = require('./lps.js').lps;
 const lpz = require('./lpz.js').lpz;
 const rps = require('./rps.js').rps;

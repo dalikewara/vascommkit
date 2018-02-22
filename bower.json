@@ -1,0 +1,31 @@
+{
+  "name": "vascommkit",
+  "description": "A free toolkit for your needed",
+  "main": "app.js",
+  "authors": [
+    "Dali Kewara"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "toolkit",
+    "vascomm",
+    "string",
+    "fake",
+    "data",
+    "looper",
+    "time",
+    "soa",
+    "ctx",
+    "cemtex",
+    "aba",
+    "helper"
+  ],
+  "homepage": "https://github.com/dalikewara/vascommkit",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

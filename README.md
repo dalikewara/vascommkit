@@ -2,16 +2,37 @@
 
 **Indonesian** : Toolkit sehari-hari untuk mempermudah pekerjaan. Toolkit ini akan terus update seiring dengan temuan kasus-kasus baru yang perlu di sederhanakan.
 
-**English** : Maintenance...
+**English** : A daily toolkit to help you work. This toolkit will continue to update along with new cases that need to be simplified.
 
 ### Installation
+  Node.js
+
       npm install vascommkit --save
 
-### Update to the latest version (1.1.6)
+  Bower
+
+      bower install vascommkit --save
+
+### Update to the latest version (1.1.7)
+  Node.js
+
       npm update vascommkit --save
 
+  Bower
+
+      bower update vascommkit --save
+
 ### Initialization
+  Node.js
+
       const vascommkit = require('vascommkit');
+
+  Bower
+
+      <script src="bower_components/vascommkit/dist/vascommkit.min.js"></script>
+      <script>
+        console.log(vascommkit);
+      </script>
 
 ### Features
 - `lps` (Left Padding Space).

@@ -1,6 +1,6 @@
 "use strict";
 
-const messages = require('../messages.js');
+const messages = require('./messages.js');
 
 exports.getVal = function (tag, xml) {
     if (!tag || !xml) {

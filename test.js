@@ -1,17 +1,17 @@
-const vascommkit = require('./index.js');
+const vascommkit = require('./app.js');
 
 // // lps
 // console.log('lps test');
 // console.log(vascommkit.lps(5, 200));
-//
+
 // // lpz
 // console.log('lpz test');
 // console.log(vascommkit.lpz(5, 200));
-//
+
 // // rps
 // console.log('rps test');
 // console.log(vascommkit.rps(5, 200));
-//
+
 // // rpz
 // console.log('rpz test');
 // console.log(vascommkit.rpz(5, 200));

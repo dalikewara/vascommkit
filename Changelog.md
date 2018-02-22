@@ -28,3 +28,6 @@
 
 - 1.1.6
   - Upgrade `cemtex` function: add some options, add `cemtex.generate` function.
+
+- 1.1.7
+  - Available on Bower.

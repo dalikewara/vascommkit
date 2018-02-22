@@ -1,6 +1,6 @@
 "use strict";
 
-const messages = require('../messages.js');
+const messages = require('./messages.js');
 
 exports.lps = function (n, val) {
     if (!n || !val) {
