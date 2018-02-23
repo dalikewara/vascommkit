@@ -11,6 +11,7 @@ const cemtex = require('./src/cemtex.js');
 const time = require('./src/time.js');
 const fake = require('./src/fake.js');
 const string = require('./src/string.js');
+const array = require('./src/array.js');
 var vascommkit = new Object;
 vascommkit.lpz = lpz.lpz;
 vascommkit.lps = lps.lps;
@@ -22,8 +23,9 @@ vascommkit.cemtex = cemtex;
 vascommkit.time = time;
 vascommkit.fake = fake.fake;
 vascommkit.string = string;
+vascommkit.array = array;
 module.exports = vascommkit;
-},{"./src/cemtex.js":152,"./src/fake.js":153,"./src/looper.js":154,"./src/lps.js":155,"./src/lpz.js":156,"./src/rps.js":158,"./src/rpz.js":159,"./src/soa.js":160,"./src/string.js":161,"./src/time.js":162}],2:[function(require,module,exports){
+},{"./src/array.js":152,"./src/cemtex.js":153,"./src/fake.js":154,"./src/looper.js":155,"./src/lps.js":156,"./src/lpz.js":157,"./src/rps.js":159,"./src/rpz.js":160,"./src/soa.js":161,"./src/string.js":162,"./src/time.js":163}],2:[function(require,module,exports){
 (function (process,global){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -5622,7 +5624,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":164}],3:[function(require,module,exports){
+},{"_process":165}],3:[function(require,module,exports){
 /**
  *
  * @namespace faker.address
@@ -33131,6 +33133,76 @@ return hooks;
 },{}],152:[function(require,module,exports){
 "use strict";
 
+exports.collapse = function (array) {
+	const len = array.length;
+	var n = [];
+	var q = 0;
+
+	if (len > 0) {
+		for ( ;q < len; q++) {
+			if (Array.isArray(array[q])) {
+				var w = 0;
+				var e = array[q].length;
+
+				for ( ;w < e; w++) {
+					n.push(array[q][w]);
+				}
+			} else {
+				n.push(array[q]);
+			}
+		}
+
+		return n;
+	}
+
+	return [];
+};
+
+exports.except = function (array, keys) {
+	if (Array.isArray(keys)) {
+		const len = keys.length;
+		var q = 0;
+
+		for ( ;q < len;q++) {
+			if (array.indexOf(keys[q]) >= 0) {
+				array = array.filter(function (x) {return x !== keys[q];});
+			}
+		}
+
+		return array;
+	} else {
+		return array.filter(function (x) {return x !== keys;});
+	}
+};
+
+exports.only = function (array, keys) {
+	if (Array.isArray(keys)) {
+		const len = keys.length;
+		var q = 0;
+		var n = [];
+
+		for ( ;q < len;q++) {
+			if (array.indexOf(keys[q]) >= 0) {
+				n.push(keys[q]);
+			}
+		}
+
+		return n;
+	} else {
+		return array.filter(function (x) {return x === keys;});
+	}
+};
+
+exports.first = function (array) {
+	return Array.isArray(array) ? array[0] : array;
+};
+
+exports.last = function (array) {
+	return Array.isArray(array) ? array[array.length - 1] : array;
+};
+},{}],153:[function(require,module,exports){
+"use strict";
+
 const fs = require('fs');
 const async = require('async');
 const messages = require('./messages.js');
@@ -33375,7 +33447,7 @@ exports.generate = function (fullpath, params, options, callback) {
     }
   });
 };
-},{"./looper.js":154,"./lps.js":155,"./lpz.js":156,"./messages.js":157,"./rps.js":158,"./rpz.js":159,"async":2,"fs":163}],153:[function(require,module,exports){
+},{"./looper.js":155,"./lps.js":156,"./lpz.js":157,"./messages.js":158,"./rps.js":159,"./rpz.js":160,"async":2,"fs":164}],154:[function(require,module,exports){
 "use strict";
 
 exports.fake = function (len, keys, local) {
@@ -33422,7 +33494,7 @@ exports.binding = function (faker, prefix, value, callback) {
   callback(data);
 };
 
-},{"faker/locale/id_ID":145}],154:[function(require,module,exports){
+},{"faker/locale/id_ID":145}],155:[function(require,module,exports){
 "use strict";
 
 exports.looper = function (start, stop, callback, done) {
@@ -33444,7 +33516,7 @@ exports.looper = function (start, stop, callback, done) {
 	task = setInterval(looper, 0);
 };
 
-},{}],155:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 "use strict";
 
 const messages = require('./messages.js');
@@ -33473,7 +33545,7 @@ exports.lps = function (n, val) {
     }
 }
 
-},{"./messages.js":157}],156:[function(require,module,exports){
+},{"./messages.js":158}],157:[function(require,module,exports){
 "use strict";
 
 const messages = require('./messages.js');
@@ -33502,7 +33574,7 @@ exports.lpz = function (n, val) {
   }
 }
 
-},{"./messages.js":157}],157:[function(require,module,exports){
+},{"./messages.js":158}],158:[function(require,module,exports){
 module.exports = {
     lps: {
         missingArgument: 'Missing argument on lps function(n, val)'
@@ -33524,7 +33596,7 @@ module.exports = {
     }
 };
 
-},{}],158:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 "use strict";
 
 const messages = require('./messages.js');
@@ -33553,7 +33625,7 @@ exports.rps = function (n, val) {
     }
 }
 
-},{"./messages.js":157}],159:[function(require,module,exports){
+},{"./messages.js":158}],160:[function(require,module,exports){
 "use strict";
 
 const messages = require('./messages.js');
@@ -33582,7 +33654,7 @@ exports.rpz = function (n, val) {
     }
 }
 
-},{"./messages.js":157}],160:[function(require,module,exports){
+},{"./messages.js":158}],161:[function(require,module,exports){
 "use strict";
 
 const messages = require('./messages.js');
@@ -33601,7 +33673,7 @@ exports.getVal = function (tag, xml) {
     return val;
 };
 
-},{"./messages.js":157}],161:[function(require,module,exports){
+},{"./messages.js":158}],162:[function(require,module,exports){
 "use strict";
 
 exports.camelCase = function (str) {
@@ -33745,7 +33817,7 @@ exports.slug = function (str, prefix) {
   return str;
 };
 
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 "use strict";
 
 const moment = require('moment');
@@ -33866,9 +33938,9 @@ exports.isExpired = function (date, params, options) {
   }
 };
 
-},{"moment":151,"moment-timezone":149}],163:[function(require,module,exports){
+},{"moment":151,"moment-timezone":149}],164:[function(require,module,exports){
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 

@@ -31,3 +31,6 @@
 
 - 1.1.7
   - Available on Bower.
+
+- 1.1.8
+  - Added functions `array`

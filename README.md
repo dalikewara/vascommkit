@@ -13,7 +13,7 @@
 
       bower install vascommkit --save
 
-### Update to the latest version (1.1.7)
+### Update to the latest version (1.1.8)
   Node.js
 
       npm update vascommkit --save
@@ -76,6 +76,12 @@
 - `cemtex` Cemtex file format is a format used by banks to allow for batch transactions.
   - `string` Generate a cemtex string from the given data. You can make your custom standard bank format.
   - `generate` Generate a cemtex file from the given data. You can make your custom standard bank format.
+- `array` Manipulate array data.
+  - `collapse` collapses an array of arrays into a single array.
+  - `except` removes the given key / value pairs from an array.
+  - `only` returns only the specified key / value pairs from the given array.
+  - `first` returns the first element in the given array.
+  - `last` returns the last element in the given array.
 
 ### Changelog
 See [https://github.com/dalikewara/vascommkit/blob/master/Changelog.md](https://github.com/dalikewara/vascommkit/blob/master/Changelog.md)
@@ -86,6 +92,10 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
 ### License
 [MIT License](https://github.com/dalikewara/vascommkit/blob/master/LICENSE)
+
+### Notes
+- *Most `string` & `array` functions implemented from Laravel's Helpers.*
+- *Sorry for bad english.*
 
 <br><hr><br>
 
@@ -872,3 +882,78 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
 
     - *string* **fullpath**
     - **params, options, callback** follow the `cemtex.string` instructions.
+<br><br>
+- `array` object {}
+  - `collapse` **function (array)**
+
+        const array = [
+          [1, 2, 3],
+          [4, 5, 6],
+          7,
+          8,
+          9,
+          10
+        ];
+        const n = vascommkit.array.collapse(array);
+
+        console.log(n); // output [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    - *array* **array**
+    - *return* array
+<br><br>
+  - `except` **function (array, keys)**
+
+        var array = ['hello', 'world'];
+        var keys = 'world';
+        var n = vascommkit.array.except(array, keys);
+
+        console.log(n); // output ['hello']
+
+        var array = ['hello', 'world', 'yeah'];
+        var keys = ['world', 'yeah'];
+        var n = vascommkit.array.except(array, keys);
+
+        console.log(n); // output ['hello']
+
+    - *array* **array**
+    - *array|string* **keys**
+    - *return* array
+<br><br>
+  - `only` **function (array, keys)**
+
+        var array = ['php', 'js', 'pyhton'];
+        var keys = 'js';
+        var n = vascommkit.array.only(array, keys);
+
+        console.log(n); // output ['js']
+
+        var array = ['php', 'js', 'pyhton'];
+        var keys = ['js', 'php', 'ruby'];
+        var n = vascommkit.array.only(array, keys);
+
+        console.log(n); // output ['js', 'php']
+
+    - *array* **array**
+    - *array|string* **keys**
+    - *return* array
+<br><br>
+  - `first` **function (array)**
+
+        var array = ['js', 'php', 'python'];
+        var n = vascommkit.array.first(array);
+
+        console.log(n); // js
+
+    - *array* **array**
+    - *return* array
+<br><br>
+  - `last` **function (array)**
+
+        var array = ['js', 'php', 'python'];
+        var n = vascommkit.array.last(array);
+
+        console.log(n); // python
+
+    - *array* **array**
+    - *return* array
+<br><br>

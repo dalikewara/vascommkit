@@ -20,6 +20,10 @@
     "aba",
     "helper"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalikewara/vascommkit.git"
+  },
   "homepage": "https://github.com/dalikewara/vascommkit",
   "ignore": [
     "**/.*",

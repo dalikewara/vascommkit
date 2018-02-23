@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/dalikewara/vascommkit.git"
   },
+  "homepage": "https://github.com/dalikewara/vascommkit",
+  "bugs": {
+    "url": "https://github.com/dalikewara/vascommkit/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,7 +26,8 @@
     "ctx",
     "cemtex",
     "aba",
-    "helper"
+    "helper",
+    "array"
   ],
   "author": "Dali Kewara",
   "license": "MIT",

@@ -161,5 +161,21 @@ const vascommkit = require('./app.js');
 //     console.log('string slug test');
 //     console.log(vascommkit.string.slug('Smith John', '+'));
 
+// // array
+    // // collapse
+    // console.log('string collapse test');
+    // console.log(vascommkit.array.collapse([[1, 2, 3], [4, 5, 6], 7, 8, 9, 10]));
+    // // except
+    // console.log('string except test');
+    // console.log(vascommkit.array.except(['hello', 'world'], ['world', 'hellow']));
+    // // only
+    // console.log('string only test');
+    // console.log(vascommkit.array.only(['js', 'php', 'python'], ['js', 'php']));
+    // // first
+    // console.log('string first test');
+    // console.log(vascommkit.array.first(['js', 'php', 'python']));
+    // // last
+    // console.log('string last test');
+    // console.log(vascommkit.array.last(['js', 'php', 'python']));
 
 /* ------------------------------------------------------------------------- */
