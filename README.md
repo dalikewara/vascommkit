@@ -56,6 +56,7 @@
   - `custom` get current datetime with custom format.
   - `add` add specified time to datetime.
   - `isExpired` check datetime expired.
+  - `secondsToTime` convert seconds to time string format | *HH:mm:ss*.
 - `fake` Generate massive amounts of fake data based on `faker`. This function returned the data as an object array. So, you can easily manage it.
 - `string` Manipulate string data.
   - `camelCase` converts the given string to `camelCase`.
@@ -303,6 +304,15 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
     - *object* **options**
       - *string* timezone
     - *return* true | false
+<br><br>
+  - `secondsToTime` **function (seconds)**
+
+        const secondsToTime = vascommkit.time.secondsToTime(35111);
+
+        console.log(secondsToTime);
+
+    - *integer* **seconds**
+    - *return* string
 <br><br>
 - `fake` **function (len, keys[optional], local[optional])**
 

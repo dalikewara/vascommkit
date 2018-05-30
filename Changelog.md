@@ -34,3 +34,6 @@
 
 - 1.1.8
   - Added functions `array`
+
+- 1.1.9
+  - Added function `time.secondsToTime`

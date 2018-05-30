@@ -117,3 +117,15 @@ exports.isExpired = function (date, params, options) {
     return false;
   }
 };
+
+exports.secondsToTime = function (seconds) {
+  const asHours = moment.duration(seconds, 'seconds').hours();
+  const asMinutes = moment.duration(seconds, 'seconds').minutes();
+  const asSeconds = moment.duration(seconds, 'seconds').seconds();
+  const num = function (n) {
+    n = String(n);
+    return (n.length === 1 || n === 0) ? ('0' + n) : n;
+  };
+  
+  return num(asHours) + ':' + num(asMinutes) + ':' + num(asSeconds);
+};

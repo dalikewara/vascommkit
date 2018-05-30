@@ -105,6 +105,9 @@ const vascommkit = require('./app.js');
 //     // isExpired
 //     console.log('time isExpired test');
 //     console.log(vascommkit.time.isExpired('2018-02-13 13:00:00'));
+//     // secondsToTime
+//     console.log('time secondsToTime test');
+//     console.log(vascommkit.time.secondsToTime(35111));
 
 // // fake
 // console.log('fake test');
