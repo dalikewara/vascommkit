@@ -33950,6 +33950,31 @@ exports.secondsToTime = function (seconds) {
   return num(asHours) + ':' + num(asMinutes) + ':' + num(asSeconds);
 };
 
+exports.dateDiff = function (start, end, prefix) {
+  start = moment(start);
+  end = moment(end);
+  var diff = end.diff(start);
+  diff = moment.duration(diff);
+
+  if (prefix === 'year') return diff.asYears();
+  if (prefix === 'month') return diff.asMonths();
+  if (prefix === 'week') return diff.asWeeks();
+  if (prefix === 'day') return diff.asDays();
+  if (prefix === 'hour') return diff.asHours();
+  if (prefix === 'minute') return diff.asMinutes();
+  if (prefix === 'second') return diff.asSeconds();
+
+  return diff.asDays();
+};
+
+exports.timeDiff = function (start, end) {
+  start = moment.duration(start).asSeconds();
+  end = moment.duration(end).asSeconds();
+  var diff = end - start;
+  diff = module.exports.secondsToTime(diff);
+
+  return diff;
+};
 },{"moment":151,"moment-timezone":149}],164:[function(require,module,exports){
 
 },{}],165:[function(require,module,exports){

@@ -13,7 +13,7 @@
 
       bower install vascommkit --save
 
-### Update to the latest version (1.1.8)
+### Update to the latest version (1.1.10)
   Node.js
 
       npm update vascommkit --save
@@ -57,6 +57,8 @@
   - `add` add specified time to datetime.
   - `isExpired` check datetime expired.
   - `secondsToTime` convert seconds to time string format | *HH:mm:ss*.
+  - `dateDiff` *Date diff* from 2 dates.
+  - `timeDiff` *Time diff* from 2 times.
 - `fake` Generate massive amounts of fake data based on `faker`. This function returned the data as an object array. So, you can easily manage it.
 - `string` Manipulate string data.
   - `camelCase` converts the given string to `camelCase`.
@@ -312,6 +314,27 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
         console.log(secondsToTime);
 
     - *integer* **seconds**
+    - *return* string
+<br><br>
+  - `dateDiff` **function (start, end, prefix)**
+
+        const dateDiff = vascommkit.time.dateDiff('2018-04-05', '2018-04-10', 'day');
+
+        console.log(dateDiff);
+
+    - *string* **start**
+    - *string* **end**
+    - *string* **prefix**
+    - *return* string
+<br><br>
+  - `timeDiff` **function (start, end, prefix)**
+
+        const timeDiff = vascommkit.time.timeDiff('09:45:00', '10:00:00');
+
+        console.log(timeDiff);
+
+    - *string* **start**
+    - *string* **end**
     - *return* string
 <br><br>
 - `fake` **function (len, keys[optional], local[optional])**

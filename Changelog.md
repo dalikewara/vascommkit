@@ -37,3 +37,6 @@
 
 - 1.1.9
   - Added function `time.secondsToTime`
+
+- 1.1.10
+  - Added functions `time.dateDiff` and `time.timeDiff`

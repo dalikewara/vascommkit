@@ -108,6 +108,12 @@ const vascommkit = require('./app.js');
 //     // secondsToTime
 //     console.log('time secondsToTime test');
 //     console.log(vascommkit.time.secondsToTime(35111));
+    // // dateDiff
+    // console.log('time dateDiff test');
+    // console.log(vascommkit.time.dateDiff('2018-04-05', '2018-04-10', 'day'));
+    // // timeDiff
+    // console.log('time timeDiff test');
+    // console.log(vascommkit.time.timeDiff('09:45:00', '10:00:00'));
 
 // // fake
 // console.log('fake test');
