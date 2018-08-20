@@ -33811,7 +33811,7 @@ exports.random = function (n) {
 };
 
 exports.randomNumeric = function (n) {
-  var str = '0123456789'.split('');
+  var str = '01234567890123456789'.split('');
   str = str.sort(function (a, b) {
     return 0.5 - Math.random()
   });

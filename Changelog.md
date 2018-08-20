@@ -43,3 +43,6 @@
 
 - 1.1.11
   - Added functions `string.randomNumeric`
+
+- 1.1.12
+  - Updated functions `string.randomNumeric`

@@ -13,7 +13,7 @@
 
       bower install vascommkit --save
 
-### Update to the latest version (1.1.11)
+### Update to the latest version (1.1.12)
   Node.js
 
       npm update vascommkit --save
