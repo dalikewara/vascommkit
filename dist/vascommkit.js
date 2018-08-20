@@ -33810,6 +33810,16 @@ exports.random = function (n) {
   return str;
 };
 
+exports.randomNumeric = function (n) {
+  var str = '0123456789'.split('');
+  str = str.sort(function (a, b) {
+    return 0.5 - Math.random()
+  });
+  str = str.join('').slice(0, n);
+
+  return str;
+};
+
 exports.slug = function (str, prefix) {
   str = str.toLowerCase();
   str = str.replace(/\s+/g, prefix ? prefix : '-');

@@ -13,7 +13,7 @@
 
       bower install vascommkit --save
 
-### Update to the latest version (1.1.10)
+### Update to the latest version (1.1.11)
   Node.js
 
       npm update vascommkit --save
@@ -75,6 +75,7 @@
   - `contains` determines if the given string contains the given value (case sensitive).
   - `limit` truncates the given string at the specified length.
   - `random` generates a random string of the specified length.
+  - `randomNumeric` generates a random numeric string of the specified length.
   - `slug` generates a URL friendly "slug" from the given string.
 - `cemtex` Cemtex file format is a format used by banks to allow for batch transactions.
   - `string` Generate a cemtex string from the given data. You can make your custom standard bank format.
@@ -564,6 +565,15 @@ Copyright &copy; 2018 [Dali Kewara](https://www.dalikewara.com) and team:
         conts str = vascommkit.string.random(3);
 
         console.log(str); // output '8FE'
+
+    - *integer* **n**
+    - *return* string
+<br><br>
+  - `randomNumeric` **function (n)**
+
+        conts str = vascommkit.string.randomNumeric(6);
+
+        console.log(str); // output '152043'
 
     - *integer* **n**
     - *return* string

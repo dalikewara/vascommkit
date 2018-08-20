@@ -40,3 +40,6 @@
 
 - 1.1.10
   - Added functions `time.dateDiff` and `time.timeDiff`
+
+- 1.1.11
+  - Added functions `string.randomNumeric`

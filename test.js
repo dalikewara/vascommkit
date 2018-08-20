@@ -166,6 +166,9 @@ const vascommkit = require('./app.js');
 //     // random
 //     console.log('string random test');
 //     console.log(vascommkit.string.random(3));
+//      // randomNumeric
+//     console.log('string random numeric');
+//     console.log(vascommkit.string.randomNumeric(6));
 //     // slug
 //     console.log('string slug test');
 //     console.log(vascommkit.string.slug('Smith John', '+'));
